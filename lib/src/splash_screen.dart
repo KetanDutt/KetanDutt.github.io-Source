@@ -30,13 +30,10 @@ class _SplashScreenState extends State<SplashScreen> {
             end: const FractionalOffset(1.0, 0.0),
           ),
         ),
-        child: ClipRRect(
-          borderRadius: BorderRadius.all(Radius.circular(80)),
-          child: Image.asset(
-            "profilepic.jpg",
-            width: 150,
-            height: 150,
-          ),
+        child: Image.asset(
+          "loader.png",
+          width: 50,
+          height: 50,
         ),
       ),
     );
