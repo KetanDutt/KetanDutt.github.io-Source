@@ -6,11 +6,26 @@ class SplashScreen extends StatefulWidget {
   _SplashScreenState createState() => _SplashScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen> {
+class _SplashScreenState extends State<SplashScreen>
+    with SingleTickerProviderStateMixin {
+  AnimationController animationController;
+
+  @override
+  dispose() {
+    animationController.dispose(); // you need this
+    super.dispose();
+  }
+
   @override
   void initState() {
     super.initState();
-    new Timer(new Duration(milliseconds: 2000), () {
+    animationController = AnimationController(
+      vsync: this,
+      duration: Duration(seconds: 7),
+    );
+
+    animationController.repeat();
+    Timer(Duration(seconds: 1), () {
       // set your desired delay time here
       Navigator.of(context).pushReplacement(
           new MaterialPageRoute(builder: (context) => new MyHomePage()));
@@ -20,7 +35,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.black,
       body: Container(
         alignment: Alignment.center,
         decoration: BoxDecoration(
@@ -30,10 +45,19 @@ class _SplashScreenState extends State<SplashScreen> {
             end: const FractionalOffset(1.0, 0.0),
           ),
         ),
-        child: Image.asset(
-          "loader.png",
-          width: 50,
-          height: 50,
+        child: AnimatedBuilder(
+          animation: animationController,
+          child: Image.asset(
+            "loader.png",
+            width: 50,
+            height: 50,
+          ),
+          builder: (BuildContext context, Widget _widget) {
+            return new Transform.rotate(
+              angle: animationController.value * 15,
+              child: _widget,
+            );
+          },
         ),
       ),
     );
