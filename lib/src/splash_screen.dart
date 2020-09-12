@@ -10,7 +10,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    new Timer(new Duration(milliseconds: 1000), () {
+    new Timer(new Duration(milliseconds: 2000), () {
       // set your desired delay time here
       Navigator.of(context).pushReplacement(
           new MaterialPageRoute(builder: (context) => new MyHomePage()));
