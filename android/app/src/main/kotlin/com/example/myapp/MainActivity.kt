@@ -1,4 +1,4 @@
-package com.example.myapp
+package ketandutt.github.io
 
 import io.flutter.embedding.android.FlutterActivity
 
