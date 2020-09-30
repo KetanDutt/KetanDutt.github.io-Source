@@ -25,7 +25,7 @@ class _SplashScreenState extends State<SplashScreen>
     );
 
     animationController.repeat();
-    Timer(Duration(seconds: 1), () {
+    Timer(Duration(milliseconds: 100), () {
       // set your desired delay time here
       Navigator.of(context).pushReplacement(
           new MaterialPageRoute(builder: (context) => new MyHomePage()));
